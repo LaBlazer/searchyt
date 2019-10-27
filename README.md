@@ -1,8 +1,10 @@
-# searchyt
-### Lightweight Python 3 library for searching youtube videos  
+# searchyt  
 
-
-Usage:
+## Getting started
+### Installing
+Using pip  
+```python -m pip install searchyt```
+### Usage
 ```python
 from searchyt import searchyt
 syt = searchyt()
@@ -19,3 +21,10 @@ Prints:
 {'title': 'Cutest Puppies Doing Funny Things - Cute Little Puppies Funny Videos | Cute Puppy Dog Compilation', 'author': 'Puppies TV', 'id': 'R7lnqfS1dUA', 'thumb': 'https://i.ytimg.com/vi/R7lnqfS1dUA/hqdefault.jpg'}
 ...
 ```
+To construct youtube url you can simply append the returned ID to url `https://youtube.com/watch?v=`
+
+* The searchyt instance should be reused since it fetches some headers on initialization. Creating a new instance on each search basically means doubling the requests to the youtube api which could get you blocked fast.
+## Contributing
+Please read CONTRIBUTING.md for the details on the process of pull request submission.
+## License
+This project is licensed under the Apache License - see the LICENSE.md file for details
