@@ -1,6 +1,6 @@
 import unittest
 
-from searchyt.searchyt import searchyt
+from searchyt import searchyt
 
 class TestSearchyt(unittest.TestCase):
     syt = searchyt()

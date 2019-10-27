@@ -1,7 +1,7 @@
 import pprint
 import logging
 
-from .searchyt import searchyt
+from searchyt import searchyt
 
 def main():
     logging.basicConfig(format="[%(filename)s:%(lineno)d]:%(levelname)s: %(message)s", level=logging.INFO)
