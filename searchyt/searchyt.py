@@ -3,7 +3,7 @@ import logging
 import json
 import re
 
-class ytsearch(object):
+class searchyt(object):
     ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
     config_regexp = re.compile(r'ytcfg\.set\(({.+?})\);')
 
@@ -11,13 +11,13 @@ class ytsearch(object):
         self.req = requests.Session()
         self.log = logging.getLogger("ytsearch")
         headers = {"connection": "keep-alive",
-                    "pragma": "no-cache", 
+                    "pragma": "no-cache",
                     "cache-control": "no-cache",
                     "upgrade-insecure-requests": "1",
-                    "user-agent": ytsearch.ua, 
+                    "user-agent": searchyt.ua,
                     "accept": "*/*",
                     "accept-language": "en-US,en;q=0.9",
-                    "referer": "https://www.youtube.com/", 
+                    "referer": "https://www.youtube.com/",
                     "dnt": "1"}
         self.req.headers.update(headers)
         self._populate_headers()
@@ -29,7 +29,7 @@ class ytsearch(object):
             self.log.debug(resp.text)
             raise Exception(f"error while scraping youtube (response code {resp.status_code})")
 
-        result = ytsearch.config_regexp.search(resp.text)
+        result = searchyt.config_regexp.search(resp.text)
         if not result:
             self.log.debug(resp.text)
             raise Exception(f"error while searching for configuration")
@@ -99,13 +99,3 @@ class ytsearch(object):
             raise Exception(f"error while getting search results page (status code {resp.status_code})")
 
         return self._parse_videos(resp.text)
-
-if __name__ == "__main__":
-    from tabulate import tabulate
-    logging.basicConfig(format="[%(filename)s:%(lineno)d]:%(levelname)s: %(message)s", level=logging.INFO)
-    yts = ytsearch()
-
-    inp = input("Search query: ")
-    while inp != "exit":
-        print(tabulate(yts.search(inp)))
-        inp = input("Search query: ")
