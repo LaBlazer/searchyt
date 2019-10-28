@@ -1,10 +1,15 @@
 # searchyt  
 
 ## Getting started
+
 ### Installing
-Using pip  
-```python -m pip install searchyt```
+
+From pip: &nbsp;&nbsp;&nbsp;&nbsp; `python -m pip install searchyt`
+
+From source: `pip install -e git+https://github.com/LaBlazer/searchyt.git#egg=searchyt`
+
 ### Usage
+
 ```python
 from searchyt import searchyt
 syt = searchyt()
