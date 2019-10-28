@@ -6,7 +6,7 @@
 
 From pip: &nbsp;&nbsp;&nbsp;&nbsp; `python -m pip install searchyt`
 
-From source: `pip install -e git+https://github.com/LaBlazer/searchyt.git#egg=searchyt`
+From source: `python -m pip install -e git+https://github.com/LaBlazer/searchyt.git#egg=searchyt`
 
 ### Usage
 
